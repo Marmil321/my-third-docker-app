@@ -27,8 +27,8 @@
   right: 16px;
   top: 6px; 
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #d32f2f;
-  color: #d32f2f;
+  border: 1px solid #c0392b;
+  color: #c0392b;
   cursor: pointer;
   font-size: 0.75rem;
   padding: 4px 8px;
@@ -94,6 +94,7 @@
 .taskEditDescription {
   resize: vertical;
   min-height: 60px;
+  max-width: 95%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -140,6 +141,7 @@
 
 .taskEditActions {
   display: flex;
+  justify-content: flex-end;
   gap: 8px;
   margin-top: 12px;
   padding-top: 12px;
