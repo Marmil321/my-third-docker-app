@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import type { Task, UpdateTaskDto } from '../../providers/tasks/tasks.types';
 import { Trash2 } from 'lucide-react';
-import './todays-tasks-list.style.css';
 import { Checkbox } from '../checkbox/checkbox.component';
+import { useTaskList } from '../hooks/use-task-list.hook';
+
+import './todays-tasks-list.style.css';
 
 interface TodaysTasksListProps {
   fetchedTasks?: Task[];
@@ -10,38 +12,16 @@ interface TodaysTasksListProps {
 }
 
 export default function TodaysTasksList({ fetchedTasks, updateTask }: TodaysTasksListProps) {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const filterToday = useCallback((task: Task) => {
+    const today = new Date().toISOString().split('T')[0];
+    return task.due_at.toString().startsWith(today);
+  }, []);
 
-    useEffect(() => {
-    if (fetchedTasks) {
-      const today = new Date().toISOString().split('T')[0];
-      setTasks(fetchedTasks.filter(task => task.due_at.toString().startsWith(today)));
-    }
-  }, [fetchedTasks]);
-
-  const toggleTask = (id: number) => {
-  setTasks(prev =>
-    prev.map(task =>
-      task.id === id
-        ? { ...task, status: task.status === 'done' ? 'todo' : 'done' }
-        : task
-    )
-  );
-
-  const toggled = tasks.find(task => task.id === id);
-    if (toggled) {
-      const newStatus = toggled.status === 'done' ? 'todo' : 'done';
-      updateTask(id, { status: newStatus });
-  }
-};
-
-
-  const deleteTask = (id: number) => {
-    setTasks(tasks.filter(task => task.id !== id));
-  };
-
-  const completedCount = tasks.filter(task => task.status === 'done').length;
-  const totalCount = tasks.length;
+  const { tasks, toggleTask, deleteTask, completedCount, totalCount } = useTaskList({
+    fetchedTasks,
+    updateTask,
+    filterFunc: filterToday,
+  });
 
   return (
     <div className="tasks-container">

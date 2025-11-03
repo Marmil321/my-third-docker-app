@@ -1,0 +1,148 @@
+.upcoming-tasks-container {
+  max-width: 42rem;
+  margin: 1.5rem auto 0;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.upcoming-tasks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 0;
+  transition: opacity 0.2s;
+}
+
+.upcoming-tasks-header:hover {
+  opacity: 0.8;
+}
+
+.upcoming-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.upcoming-tasks-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.upcoming-tasks-count {
+  font-size: 0.875rem;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.upcoming-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.upcoming-toggle-btn:hover {
+  color: #1f2937;
+}
+
+.upcoming-progress-section {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.upcoming-progress-text {
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-background {
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  height: 0.5rem;
+}
+
+.progress-bar-fill {
+  background-color: #3b82f6;
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: all 0.3s;
+}
+
+.upcoming-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.upcoming-tasks-empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 2rem 0;
+}
+
+.upcoming-task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  border-left: 4px solid transparent;
+  transition: all 0.2s;
+}
+
+.upcoming-task-item:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.upcoming-task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.upcoming-task-text {
+  color: #374151;
+  font-weight: 500;
+}
+
+.upcoming-task-text-completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.upcoming-task-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.upcoming-task-delete-btn {
+  flex-shrink: 0;
+  color: #9ca3af;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.upcoming-task-delete-btn:hover {
+  color: #ef4444;
+}

@@ -1,5 +1,6 @@
 import {useEffect} from "react";
 import TodaysTasksList from "../../components/todays-tasks-list/todays-tasks-list.component";
+import UpcomingTasksList from "../../components/upcoming-tasks/upcoming-tasks.component";
 import { useTasksContext } from "../../providers/tasks/tasks.context";
 import { TasksProvider } from "../../providers/tasks/tasks.provider";
 import type { Task } from "../../providers/tasks/tasks.types";
@@ -20,6 +21,10 @@ function HomeContent() {
       <TodaysTasksList 
         fetchedTasks={tasks as Task[]} 
         updateTask={updateTask} 
+      />
+      <UpcomingTasksList
+        fetchedTasks={tasks as Task[]}
+        updateTask={updateTask}
       />
     </div>
   );
