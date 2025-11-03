@@ -1,8 +1,9 @@
 .button-component {
-    background-color: var(--primary-color);
+    background: linear-gradient(to bottom, #1abc9c, #6cb1e6);
     border: none;
-    color: var(--text-color);
+    color: #ecf0f1;
     font-size: 16px;
+    font-weight: bolder;
     cursor: pointer;
     padding: 16px 48px;
     border-radius: 48px;

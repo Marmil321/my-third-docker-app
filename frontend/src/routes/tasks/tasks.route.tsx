@@ -24,12 +24,21 @@ function TasksContent() {
 
   return (
     <div className="container">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-        <h1>Tasks</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+        <h1>Your tasks</h1>
         <Button onClick={() => setIsModalOpen(true)}>
           Create Task
         </Button>
-      </div>
+      </div> 
+      <div
+        className='task-divider'
+        style={{
+          width: '100%',
+          height: '2px',
+          background: 'linear-gradient(to right, #1abc9c, #6cb1e6)',
+          margin: '10px 0 30px 0',
+        }}
+      ></div>
 
       {loading && <p>Loading tasks...</p>}
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}

@@ -1,5 +1,5 @@
 .footer-component {
-    background: var(--dark-color);
+    background: linear-gradient(to top, #6181a2 , var(--dark-color));
     padding: 20px 10px;
 }
 

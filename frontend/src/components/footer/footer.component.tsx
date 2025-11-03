@@ -11,7 +11,7 @@ export function Footer() {
     <footer className={"footer-component"}>
       <div className={"footer-component-container container"}>
         <div className={"footer-component-item"}>
-          <p>
+          <p style={{marginBottom: "42px"}}>
             Copyright © {startYear}{currentYear === startYear ? '' : ` - ${currentYear}`} FunkWeb.
             All rights reserved.
           </p>
