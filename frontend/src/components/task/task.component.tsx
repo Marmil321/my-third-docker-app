@@ -43,7 +43,7 @@ export default function TaskItem({ task, toggleTask }: TaskItemProps) {
       className={`taskItem ${task.status === 'done' ? 'taskItemCompleted' : ''}`}
     >
       <div className="taskHeader">
-        <span className="bullet">-</span>
+        <Checkbox task={task} toggleTask={toggleTask} />
         <div className="taskContent">
           <div className="taskTitleRow">
             <span className="taskText">{task.title}</span>
@@ -62,7 +62,6 @@ export default function TaskItem({ task, toggleTask }: TaskItemProps) {
             </span>
           </div>
         </div>
-        <Checkbox task={task} toggleTask={toggleTask} />
       </div>
     </li>
   );

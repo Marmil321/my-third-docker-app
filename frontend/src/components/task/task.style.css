@@ -7,21 +7,44 @@
 .taskItem {
     font-size: 18px;
     font-weight: bold;
-    color: var(--text-color);
-    background-color: var(--primary-color);
-    border-radius: 5px;
-    margin: 8px;
-    padding: 12px;
+    color: #000;
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin: 12px;
+    padding: 0;
+    border: 1px solid #0078d4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+.taskItem::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: linear-gradient(to bottom, #0078d4, #005a9e);
+    border-bottom: 1px solid #004578;
 }
 
 .taskItemCompleted {
     opacity: 0.65;
 }
 
+.taskItemCompleted::before {
+    background: linear-gradient(to bottom, #6c757d, #5a6268);
+    border-bottom: 1px solid #495057;
+}
+
 .taskHeader {
     display: flex;
     align-items: flex-start;
     gap: 10px;
+    padding: 44px 16px 16px 16px;
+    background-color: #f3f3f3;
+    min-height: 80px;
 }
 
 .bullet {
@@ -49,49 +72,54 @@
     flex: 1;
     font-size: 18px;
     font-weight: bold;
+    color: #000;
 }
 
 .taskDescription {
     margin: 0;
     font-size: 15px;
     font-weight: normal;
-    color: var(--text-color);
+    color: #333;
     opacity: 0.85;
     line-height: 1.4;
 }
 
 .taskStatus {
     padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     flex-shrink: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .taskStatus--todo {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    background-color: #fff4e5;
+    color: #663c00;
+    border-color: #ffb84d;
 }
 
 .taskStatus--in-progress {
-    background-color: rgba(245, 124, 0, 0.15);
-    color: var(--text-color);
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    border-color: #64b5f6;
 }
 
 .taskStatus--done {
-    background-color: var(--text-color);
-    color: var(--secondary-color);
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border-color: #66bb6a;
 }
 
 .taskMeta {
     display: flex;
     gap: 16px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    color: var(--text-color);
-    opacity: 0.75;
+    color: #555;
+    opacity: 0.85;
 }
 
 .taskDueDate {
@@ -101,7 +129,7 @@
 }
 
 .taskOverdue {
-    color: var(--warning-color);
+    color: #d32f2f;
     font-weight: 700;
     opacity: 1;
 }

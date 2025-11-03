@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import TaskItem from "../../components/task/task.component";
+import EditableTask from '../../components/editable-task/editable-task.component.tsx';
 import { TasksProvider } from "../../providers/tasks/tasks.provider";
 import { useTasksContext } from "../../providers/tasks/tasks.context";
 import { CreateTaskModal } from '../../components/create-task-modal/create-task-modal.components';
 import { Button } from "../../components/button/button.component";
 
 function TasksContent() {
-  const { tasks, loading, error, fetchTasks, updateTask } = useTasksContext();
+  const { tasks, loading, error, fetchTasks, updateTask, deleteTask } = useTasksContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function TasksContent() {
       {tasks.length > 0 && (
         <ul style={{ listStyle: 'none', padding: 0 }}>
           {tasks.map(task => (
-            <TaskItem
+            <EditableTask
               key={task.id}
               task={{
                 id: task.id,
@@ -51,6 +51,8 @@ function TasksContent() {
                 status: task.status,
               }}
               toggleTask={handleToggleTask}
+              updateTask={updateTask}
+              deleteTask={() => deleteTask(task.id)}
             />
           ))}
         </ul>
