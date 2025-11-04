@@ -1,4 +1,3 @@
-// TODO: implement tasks context
 import React, { createContext } from 'react';
 import type { TasksContextValue } from './tasks.types';
 

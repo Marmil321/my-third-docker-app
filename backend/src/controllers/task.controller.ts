@@ -1,35 +1,28 @@
 import { JsonController, Get, Post, Put, Delete, Param, Body, HttpCode, NotFoundError, BadRequestError } from 'routing-controllers';
 import { tasksQueue } from '../queues/tasks.queue.js';
-import { postgres } from '../postgres.js';
+import { TaskRepository } from '../repositories/task.repository.js';
 
 @JsonController('/task')
 export class TaskController {
   @Get('s/')
   async getAllTasks() {
-    const result = await postgres.query(
-      'SELECT * FROM tasks ORDER BY created_at DESC'
-    );
-
+    const taskRepository = new TaskRepository();
+    const response = await taskRepository.getAllTasks();
+    console.log('Fetched tasks response:', response);
     return {
-      success: true,
-      data: result.rows
+      success: response.success,
+      data: response.tasks
     };
   }
 
   @Get('/:id')
   async getTaskById(@Param('id') id: bigint) {
-    const result = await postgres.query(
-      'SELECT * FROM tasks WHERE id = $1',
-      [id]
-    );
-
-    if (result.rows.length === 0) {
-      throw new NotFoundError('Task not found');
-    }
-
+    const taskRepository = new TaskRepository();
+    const response = await taskRepository.getTaskById(id);
+    
     return {
-      success: true,
-      data: result.rows[0]
+      success: response.success,
+      data: response.task
     };
   }
 

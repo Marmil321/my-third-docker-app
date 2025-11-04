@@ -1,4 +1,3 @@
-// TODO: implement tasks provider
 import { useState, useCallback, type ReactNode } from 'react';
 import { TasksContext } from './tasks.context';
 import type { Task, CreateTaskDto, UpdateTaskDto } from './tasks.types';
@@ -22,10 +21,9 @@ export function TasksProvider({ children }: { children: ReactNode }) {
       }
 
       const result = await response.json();
-
+      
       if (result.success && result.data) {
         setTasks(result.data);
-        console.log("Fetched tasks:", result.data);
       }
     } catch (err) {
       setError((err as Error).message);
