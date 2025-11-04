@@ -1,6 +1,7 @@
 import { JsonController, Get, Post, Put, Delete, Param, Body, HttpCode, NotFoundError, BadRequestError } from 'routing-controllers';
 import { tasksQueue } from '../queues/tasks.queue.js';
 import { TaskRepository } from '../repositories/task.repository.js';
+import { CreateTaskDTO, UpdateTaskDTO, validateUpdateTaskDTO, validateCreateTaskDTO } from '../types/task.js';
 
 @JsonController('/task')
 export class TaskController {
@@ -28,15 +29,9 @@ export class TaskController {
 
   @Post('/')
   @HttpCode(201)
-  async createTask(@Body() body: { title: string; due_at: Date; description?: string }) {
+  async createTask(@Body() body: CreateTaskDTO) {
     const { title, due_at, description } = body;
-
-    if (!title) {
-      throw new BadRequestError('Title is required');
-    }
-    if (!due_at) {
-      throw new BadRequestError('Due date is required');
-    }
+    validateCreateTaskDTO(body);
 
     const job = await tasksQueue.add('create-task', {
       title,
@@ -53,11 +48,11 @@ export class TaskController {
   @Put('/:id')
   async updateTask(
     @Param('id') id: bigint,
-    @Body() body: { title?: string; description?: string; status?: string }
-  ) {
+    @Body() body: UpdateTaskDTO) {
+    const updates = validateUpdateTaskDTO(body);
     const job = await tasksQueue.add('update-task', {
       id,
-      ...body
+      ...updates
     });
 
     return {
