@@ -9,7 +9,7 @@ export class TaskController {
   async getAllTasks() {
     const taskRepository = new TaskRepository();
     const response = await taskRepository.getAllTasks();
-    console.log('Fetched tasks response:', response);
+    
     return {
       success: response.success,
       data: response.tasks
