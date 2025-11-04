@@ -40,7 +40,7 @@ async function handleCreateTask(job: Job, data: Task) {
   };
 }
 
-async function handleUpdateTask(job: Job, data: any) {
+async function handleUpdateTask(job: Job, data: Task) {
   await job.updateProgress(10);
 
   const {id, title, description, status} = data;
@@ -60,6 +60,10 @@ async function handleUpdateTask(job: Job, data: any) {
   if (status !== undefined) {
     updates.push(`status = $${paramCount++}`);
     values.push(status);
+  }
+  if( data.due_at !== undefined) {
+    updates.push(`due_at = $${paramCount++}`);
+    values.push(data.due_at);
   }
 
   if (updates.length === 0) {
